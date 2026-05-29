@@ -1,0 +1,20 @@
+<div class="recipe-card">
+    <img src="${recipe.strMealTHumb}" 
+    alt="${recipe.strMeal}" 
+    class="card-photo">
+</div>
+
+<div class="card-body">
+    <div class="card-name">"${recipe.strMeal}"</div>
+    <div class="card-category">"${recipe.strCategory}"</div>
+    <div class="card-footer">
+        <button class="btn-save"
+         onclick="saveRecipe(
+            '${recipe.idMeal}',
+            '${recipe.strMeal}',
+            '${recipe.strCategory}',
+            '${recipe.strMealThumb}')">
+            Save Recipe
+        </button>
+    </div>
+</div>
