@@ -173,3 +173,12 @@ function saveRecipe(id, name, category, thumb) {
   showSaved();
   savedSection.scrollIntoView({ behavior: "smooth" });
 }
+
+function removeRecipe(id) {
+  const position = savedRecipes.findIndex((recipe) => recipe.idMeal === id);
+  if (position !== -1) {
+    savedRecipes.splice(position, 1);
+  }
+
+  showSaved();
+}
