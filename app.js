@@ -161,6 +161,17 @@ function showSaved() {
   savedGrid.innerHTML = html;
 }
 
+function saveToStorage() {
+  localStorage.setItem("flavour-saved", JSON.stringify(savedRecipes));
+}
+
+function loadFromStorage() {
+  const stored = localStorage.getItem("flavour-saved");
+  if (stored) {
+    savedRecipes = JSON.parse(stored);
+  }
+}
+
 function saveRecipe(id, name, category, thumb) {
   const recipe = {
     idMeal: id,
@@ -170,6 +181,7 @@ function saveRecipe(id, name, category, thumb) {
   };
 
   savedRecipes.push(recipe);
+  saveToStorage();
   showSaved();
   savedSection.scrollIntoView({ behavior: "smooth" });
 }
@@ -179,6 +191,12 @@ function removeRecipe(id) {
   if (position !== -1) {
     savedRecipes.splice(position, 1);
   }
+  showSaved();
+  saveToStorage();
+}
 
+loadFromStorage();
+
+if (savedRecipes.length > 0) {
   showSaved();
 }
